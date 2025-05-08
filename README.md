@@ -25,3 +25,19 @@ In DD4hep, cuts per particle are specified as limits in `<limitset name="my_limi
 ## Filter to avoid saving every hit
 
 Specified by `SIM.filter.tracker`in `steering.py`.
+
+## Checking data extension
+
+Inside a ROOT session,
+
+```
+gSystem->Load("libDDCore");
+gSystem->Load("libDDG4");
+gSystem->Load("install/lib/liblayered_detector.so");
+.L dd4hep_plugin/hgcal_info.hpp
+dd4hep::Detector& lcdd = dd4hep::Detector::getInstance();
+lcdd.fromXML("compact/hgcal_simple.xml")
+auto det = lcdd.detector("MyDetector")
+auto info = det.extension<hgcal_info>();
+info->layer_v.size()
+```

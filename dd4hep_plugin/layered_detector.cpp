@@ -10,42 +10,7 @@ static const std::unordered_set<std::string> absorber_materials = {
     "Lead" , "WCu", "Iron", "StainlessSteel", "Copper", "Steel235"
 };
 
-std::vector<std::string> material_names = {
-    "Air",
-    "Vacuum",
-    "Aluminium",
-    "Ar_50pct_plus_CO_2_50pct",
-    "CFM",
-    "Copper",
-    "G10",
-    "Iron",
-    "Kapton",
-    "Lead",
-    "PCB",
-    "Polystyrene",
-    "Polystyrole",
-    "Scintillator",
-    "Silicon",
-    "StainlessSteel",
-    "Steel235",
-    "WCu"
-};
-
-#include <vector>
-#include <string>
-#include <algorithm>  // for std::find
-#include <stdexcept>  // for std::out_of_range
-
-int getMaterialIndex(const std::vector<std::string>& materials, const std::string& name) {
-    auto it = std::find(materials.begin(), materials.end(), name);
-    if (it != materials.end()) {
-        return static_cast<int>(std::distance(materials.begin(), it));
-    } else {
-        throw std::out_of_range("Material not found: " + name);
-    }
-}
-
-
+#include "hgcal_info.hpp"
 
 static dd4hep::Ref_t create_layered_detector(dd4hep::Detector& description, xml_h e, dd4hep::SensitiveDetector sens ) {
     xml_det_t  x_det = e;
@@ -65,6 +30,7 @@ static dd4hep::Ref_t create_layered_detector(dd4hep::Detector& description, xml_
     // Start stacking slices along z
     double z_offset = 0.0;
     int slice_num = 0;
+    hgcal_info * det_info = new hgcal_info();
 
     for (xml_coll_t slice(x_det, _U(slice)); slice; ++slice, ++slice_num) {
         double thickness = slice.attr<double>("thickness") * dd4hep::mm;
@@ -101,9 +67,16 @@ static dd4hep::Ref_t create_layered_detector(dd4hep::Detector& description, xml_
         dd4hep::Position pos = dd4hep::Position(0, 0, zpos);
         dd4hep::PlacedVolume pv = assembly.placeVolume(slice_vol, pos);
         pv.addPhysVolID("layer", slice_num);
-        auto material_index = getMaterialIndex( material_names, material );
+        auto material_index = det_info->getMaterialIndex( material );
 
         pv.addPhysVolID("material", material_index );
+
+        hgcal_info::hgcal_info_layer layer_info;
+        layer_info.matindex = det_info->getMaterialIndex(material);
+        layer_info.zini = z_offset;
+        layer_info.zfin = z_offset + thickness;
+        det_info->layer_v.push_back(layer_info);
+
 
         z_offset += thickness;
     }
@@ -125,6 +98,8 @@ static dd4hep::Ref_t create_layered_detector(dd4hep::Detector& description, xml_
     det.setPlacement(envelope_pv);
     // Register the detector
 //     description.add(det_name, det);
+
+    det.addExtension<hgcal_info>(det_info);
     return det;
 }
 
