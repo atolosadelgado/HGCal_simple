@@ -1,0 +1,22 @@
+# Use this open statement to create an OpenGL view:
+/vis/open OGL 600x600-0+0
+
+# Draw geometry:
+/vis/drawVolume
+
+# Specify style (surface, wireframe, auxiliary edges,cloud...)
+/vis/viewer/set/style surface
+
+# Draw smooth trajectories at end of event
+/vis/scene/add/trajectories smooth
+/vis/modeling/trajectories/create/drawByParticleID
+
+# Accumulate trajectories for each event
+/vis/scene/endOfEventAction accumulate
+
+# Make the "world_volume" box invisible
+/vis/geometry/set/visibility world_volume 0 false
+/vis/viewer/set/autoRefresh true
+/vis/verbose warnings
+
+

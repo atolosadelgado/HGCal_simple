@@ -1,0 +1,112 @@
+
+<lccdd>
+  <materials>
+<material name="Air">
+  <D value="0.001214" unit="g/cm3"/>
+  <composite ref="N" n="0.749400"/>
+  <composite ref="O" n="0.236900"/>
+  <composite ref="Ar" n="0.012900"/>
+  <composite ref="H" n="0.000800"/>
+</material>
+
+<material name="Vacuum">
+  <D value="0.000000001214" unit="g/cm3"/>
+  <composite ref="N" n="0.749400"/>
+  <composite ref="O" n="0.236900"/>
+  <composite ref="Ar" n="0.012900"/>
+  <composite ref="H" n="0.000800"/>
+</material>
+
+<material name="Aluminium">
+  <composite ref="Al" n="1.0"/>
+<D value="2.699999" unit="g/cm3"/>
+</material>
+<material name="Ar_50pct_plus_CO_2_50pct">
+  <D value="0.001729" unit="g/cm3"/>
+  <composite ref="Ar" n="0.475815"/>
+  <composite ref="C" n="0.143061"/>
+  <composite ref="O" n="0.381124"/>
+</material>
+<material name="CFM">
+  <D value="0.120000" unit="g/cm3"/>
+  <composite ref="N" n="0.006745"/>
+  <composite ref="O" n="0.002132"/>
+  <composite ref="Ar" n="0.000116"/>
+  <composite ref="H" n="0.051411"/>
+  <composite ref="C" n="0.444965"/>
+  <composite ref="Cl" n="0.494632"/>
+</material>
+<material name="Copper">
+  <composite ref="Cu" n="1.0"/>
+  <D value="8.959996" unit="g/cm3"/>
+</material>
+<material name="G10">
+  <D value="1.699999" unit="g/cm3"/>
+  <composite ref="C" n="0.132322"/>
+  <composite ref="H" n="0.032572"/>
+  <composite ref="O" n="0.483161"/>
+  <composite ref="Si" n="0.351944"/>
+</material>
+<material name="Iron">
+  <composite ref="Fe" n="1.0"/>
+  <D value="7.869997" unit="g/cm3"/>
+</material>
+<material name="Kapton">
+  <D value="1.110000" unit="g/cm3"/>
+  <composite ref="C" n="0.599851"/>
+  <composite ref="H" n="0.080541"/>
+  <composite ref="O" n="0.319608"/>
+</material>
+<material name="Lead">
+  <composite ref="Pb" n="1.0"/>
+  <D value="11.349995" unit="g/cm3"/>
+</material>
+<material name="PCB">
+  <D value="1.699999" unit="g/cm3"/>
+  <composite ref="Si" n="0.180774"/>
+  <composite ref="O" n="0.405633"/>
+  <composite ref="C" n="0.278042"/>
+  <composite ref="H" n="0.068443"/>
+  <composite ref="Br" n="0.067109"/>
+</material>
+<material name="Polystyrene">
+  <D value="1.060000" unit="g/cm3"/>
+  <composite ref="H" n="0.077418"/>
+  <composite ref="C" n="0.922582"/>
+</material>
+<material name="Polystyrole">
+  <D value="1.065000" unit="g/cm3"/>
+  <composite ref="H" n="0.077421"/>
+  <composite ref="C" n="0.922579"/>
+</material>
+<material name="Scintillator">
+  <D value="1.032000" unit="g/cm3"/>
+  <composite ref="C" n="0.915121"/>
+  <composite ref="H" n="0.084879"/>
+</material>
+<material name="Silicon">
+  <composite ref="Si" n="1.0"/>
+  <D value="2.329999" unit="g/cm3"/>
+</material>
+<material name="StainlessSteel">
+  <D value="8.019997" unit="g/cm3"/>
+  <composite ref="Fe" n="0.699600"/>
+  <composite ref="C" n="0.000400"/>
+  <composite ref="Mn" n="0.010000"/>
+  <composite ref="Cr" n="0.190000"/>
+  <composite ref="Ni" n="0.100000"/>
+</material>
+<material name="Steel235">
+  <D value="7.869997" unit="g/cm3"/>
+  <composite ref="Fe" n="0.984300"/>
+  <composite ref="C" n="0.001700"/>
+  <composite ref="Mn" n="0.014000"/>
+</material>
+<material name="WCu">
+  <D value="14.978993" unit="g/cm3"/>
+  <composite ref="W" n="0.750000"/>
+  <composite ref="Cu" n="0.250000"/>
+</material>
+
+  </materials>
+</lccdd>
